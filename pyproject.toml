@@ -1,0 +1,78 @@
+[build-system]
+requires = ["setuptools>=75.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pytypehintcheck"
+version = "0.1.0"
+description = "A tool for checking Python type hints"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "GPL2"}
+authors = [
+    {name = "André Göpel", email = "andre.goepel@sik-berlin.de"}
+]
+keywords = ["type hints", "type checking", "static analysis", "python"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Software Development :: Quality Assurance",
+    "Topic :: Software Development :: Testing",
+]
+
+dependencies = [
+    # Add your runtime dependencies here
+    # Example: "typing-extensions>=4.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "isort>=5.0.0",
+    "mypy>=1.0.0",
+    "ruff>=0.1.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/agoe1701/pytypehintcheck"
+Documentation = "https://github.com/agoe1701/pytypehintcheck#readme"
+Repository = "https://github.com/agoe1701/pytypehintcheck"
+Issues = "https://github.com/agoe1701/pytypehintcheck/issues"
+
+
+[tool.black]
+line-length = 79
+target-version = ["py38", "py39", "py310", "py311", "py312"]
+
+[tool.isort]
+profile = "black"
+line_length = 79
+
+[tool.mypy]
+python_version = "3.8"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "--cov=pytypehintcheck --cov-report=term-missing"
+
+[tool.ruff]
+line-length = 79
+target-version = "py38"
+select = ["E", "F", "I", "N", "W", "B", "ANN"]
+ignore = []

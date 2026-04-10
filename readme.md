@@ -2,13 +2,13 @@
 
 pytypeinfo is a small package that allows to get information about and check instances of typed objects at runtime. Its main purpose is to extend pythons builtin type checking functionality ([`isinstance()`](https://docs.python.org/3/library/functions.html#isinstance) and [`issubclass()`](https://docs.python.org/3/library/functions.html#issubclass)) to also check instance members. It is a wrapper around the [`get_type_hints()`](https://docs.python.org/3/library/typing.html#typing.get_type_hints) function from the python standard library module typing to inspect typed class definitions.
 
-It provides to major classes:
+It provides two major classes:
 
 `TypeInfo` contains information about a typed member
 
 `TypeInfoCollection` is collection of TypeInfo instances. The collection can be created from a class.
 
-## Example - Checking instances against typed class
+## Example - Checking instances against typed class definitions
 
 ```python
 from __future__ import annotations
@@ -59,6 +59,7 @@ info_value = info['value']
 info_value.is_any
 >>> True
 
+
 # Get TypInfo object for member 'items' and inspect tuple properties
 info_items = info['items']
 
@@ -74,6 +75,8 @@ info_items.sub_types[0].type is int
 
 # Second parameter of tuple generic is ellipsis
 info_items.sub_types[1].is_ellipsis
+>>> True
+
 
 # Get TypeInfo object for member 'callback'
 info_callback = info['callback']

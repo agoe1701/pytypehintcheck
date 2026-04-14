@@ -386,7 +386,7 @@ class TypeInfo(Mapping):
         self.is_literal = self.origin is Literal
         self.is_type_var = isinstance(hint, TypeVar)
         self.is_annotation = _is_annotation(hint)
-        self.is_union = self.origin is Union
+        self.is_union = self.origin in (Union, UnionType)
         self.is_class = hint is type or self.origin is type
 
         if self.is_annotation or self.is_class_var:
@@ -405,7 +405,8 @@ class TypeInfo(Mapping):
             self.literal_values = get_args(hint)
 
         elif self.is_union:
-            self.type = hint
+            self.type = UnionType
+            self.is_type = True
             self.sub_types = _resolve_sub_types(hint)
             self.origin = None
 
@@ -569,14 +570,15 @@ class TypeInfo(Mapping):
         name: str,
         do_raise: bool = False
     ) -> bool:
+        # Order of checks is important
         if self.is_any:
             return True
 
-        if self.type is not None and not isinstance(obj, self.type):
-            return False
-
         if self.is_union:
             return self._union_check(obj, name, do_raise)
+
+        if self.type is not None and not isinstance(obj, self.type):
+            return False
 
         if self.is_literal:
             if obj not in self.literal_values:

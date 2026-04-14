@@ -3,9 +3,8 @@ from __future__ import annotations
 from types import MappingProxyType
 from typing import Mapping, get_type_hints
 
-from test_common import TestCommon
-
 from pytypeinfo import TypeInfo
+from tests.test_common import TestCommon
 
 
 # -----------------------------------------------------------------------------

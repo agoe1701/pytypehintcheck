@@ -2,9 +2,8 @@ from __future__ import annotations
 
 from typing import Literal, get_type_hints
 
-from test_common import TestCommon
-
 from pytypeinfo import TypeInfo
+from tests.test_common import TestCommon
 
 
 # -----------------------------------------------------------------------------

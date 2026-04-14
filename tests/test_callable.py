@@ -4,9 +4,8 @@ import collections.abc
 import typing
 from typing import Callable, get_type_hints
 
-from test_common import TestCommon
-
 from pytypeinfo import TypeInfo
+from tests.test_common import TestCommon
 
 
 # -----------------------------------------------------------------------------

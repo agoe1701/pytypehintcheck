@@ -21,10 +21,8 @@
 
     "python.testing.unittestArgs": [
         "-v",
-        "-s",
-        "./tests",
-        "-p",
-        "test_*.py"
+        "-s", "./tests",
+        "-p", "test_*.py"
     ],
     "python.testing.pytestEnabled": false,
     "python.testing.unittestEnabled": true,
@@ -38,4 +36,5 @@
         "--check-untyped-defs",
         "--disable_error_code=attr-defined"
     ],
+    "python-envs.defaultEnvManager": "ms-python.python:pipenv",
 }

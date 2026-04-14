@@ -14,7 +14,7 @@ from tests.test_common import TestCommon
 # Classes
 # -----------------------------------------------------------------------------
 
-if sys.version_info < (3, 10):
+if sys.version_info < (3, 11):
     class _ClassVarHints:
         cl_float: ClassVar[float]
         cl_complex: ClassVar[tuple[int, ...]]
@@ -40,7 +40,7 @@ class ClassVarTests(TestCommon):
         )
 
     @unittest.skipIf(
-        sys.version_info < (3, 10),
+        sys.version_info < (3, 11),
         'Plain ClassVar is not supported'
     )
     def test_class_var_simple(self):

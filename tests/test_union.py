@@ -19,6 +19,7 @@ if sys.version_info < (3, 10):
 else:
     class _UnionHints:
         simple: int | str
+        old: Union[int, str]
 
 
 class UnionTests(TestCommon):

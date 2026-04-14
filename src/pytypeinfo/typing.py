@@ -15,8 +15,8 @@ if sys.version_info < (3, 10):
     UnionType = type(None)
 else:
     # Import everything that has been introduced in python 3.10
-    from types import NoneType      # noqa
-    from typing import TypeAlias, TypeGuard, UnionType
+    from types import NoneType, UnionType
+    from typing import TypeAlias, TypeGuard
 
 if sys.version_info < (3, 11):
     from typing_extensions import dataclass_transform
